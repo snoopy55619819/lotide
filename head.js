@@ -18,3 +18,10 @@ assertEqual(head([5,6,7]), 5); //Output: fail
 assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello"); //Output: pass
 assertEqual(head([5]), 5); //Output: true
 assertEqual(head([]), undefined); //Output: true
+
+//This was the implementation in lodash library...je ne sais compreand pas...
+/*
+function head(array) {
+  return (array && array.length) ? array[0] : undefined;
+};
+*/
