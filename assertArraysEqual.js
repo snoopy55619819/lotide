@@ -9,9 +9,9 @@ const eqArrays = function(array1, array2) {
 
 //Check if arrays are same and return assertion result.
 const assertArraysEqual = function(actual, expected) {
-  const same = eqArrays(actual[0], actual[1]) === expected;
-  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: [${actual[0]}] ${same ? '===' : '!=='} [${actual[1]}]`);
+  const same = eqArrays(actual, expected)
+  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: [${actual}] ${same ? '===' : '!=='} [${expected}]`);
 };
 
-assertArraysEqual([[1, 2, 3], [1, 2, 3]], true);
-assertArraysEqual([['a', 'b', 'c'], ['a', 'b', 'c']], true);
+assertArraysEqual([1, 2, 3], [1, 2, 3]);
+assertArraysEqual(['a', 'b', 'c'], ['a', 'b', 'c']);
