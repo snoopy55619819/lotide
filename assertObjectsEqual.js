@@ -1,10 +1,10 @@
 //Nikhil Tallapureddy
+// TO-DO: Work on implementing case where objects can be values for the eqObjects().
+// const isValueAnObject = (typeof object1Keys === 'object' && !Array.isArray(object1Keys) && object1Keys !== null ? true : false)
+// if (isValueAnObject) {
+// }
+//
 
-//Check if values are same and return assertion result.
-const assertEqual = function(actual, expected) {
-  const same = actual === expected;
-  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: ${actual} ${same ? '===' : '!=='} ${expected}`);
-};
 //Check if two arrays are equal.
 const eqArrays = function(array1, array2) {
   let areArraysEqual = true;
@@ -27,11 +27,6 @@ const eqObjects = function(object1, object2) {
     const key2Value = object2[obj1key];
     const isValueAnArray = Array.isArray(key1Value);
     
-    // TO-DO: work on implementing objects as values later.
-    // const isValueAnObject = (typeof object1Keys === 'object' && !Array.isArray(object1Keys) && object1Keys !== null ? true : false)
-    // if (isValueAnObject) {
-    // }
-    
     //If value is an array, use eqArrays() function to compare them.
     if (isValueAnArray) {
       const areArraysEqual = eqArrays(key1Value, key2Value);
@@ -46,23 +41,20 @@ const eqObjects = function(object1, object2) {
   return (object1Keys.length === object2Keys.length ? true : false);
 };
 
+//Compare objects and return assertion results.
+const assertObjectsEqual = function(actual, expected) {
+  const inspect = require('util').inspect; //Import util so we can use inspect to show objects in output.
+  const same = eqObjects(actual, expected);
 
-//Test Cases:
-const ab = { a: "1", b: "2", c: "3", d: "4", fapple: "6", apple: "5"};
-const ba = { b: "2", a: "1", c: "3", d: "4", apple: "5", fapple: "6"};
-assertEqual(eqObjects(ab, ba), true); // => true
+  if (same) {
+    console.log(`✅✅✅ Assertion Passed: ${inspect(actual)} === ${inspect(expected)}`);
+  } else {
+    console.log(`❌❌❌ Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`);
+  }
+};
 
-const abc = { a: "1", b: "2", c: "3" };
-assertEqual(eqObjects(ab, abc), false); // => true
+const abc5 = {a: [1, 2, 3], b: 5};
+const abc6 = {a: [1, 2, 3], b: 5};
+//assertObjectsEqual(eqObjects(abc5, abc6), true); // => true
+assertObjectsEqual(abc5, abc6); // => Assertion Failed
 
-const abc1 = { a: "1"};
-const abc2 = { b: "2"};
-assertEqual(eqObjects(abc1, abc2), false); // => true
-
-const abc3 = {};
-const abc4 = {};
-assertEqual(eqObjects(abc3, abc4), true); // => true
-
-const abc5 = {a: [1, 2, 3]};
-const abc6 = {a: [1, 2, 3]};
-assertEqual(eqObjects(abc5, abc6), true); // => true
