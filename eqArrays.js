@@ -1,6 +1,4 @@
 const eqArrays = function(array1, array2) {
-  let areArraysEqual = true;
-  
   for (let i = 0; i < array1.length; i++) {
     const isValue1AnArray = Array.isArray(array1[i]);
     const isValue2AnArray = Array.isArray(array2[i]);

@@ -5,7 +5,6 @@ const assertEqual = require('./assertEqual');
 const countOnly = function(allItems, itemsToCount) {
   const itemCounter = {}; //Create empty counter obj.
 
-  //Iterate though each item in allItems
   for (const item of allItems) {
     //Check if item needs to be counted.
     if (itemsToCount[item] === true){
@@ -13,7 +12,6 @@ const countOnly = function(allItems, itemsToCount) {
       (itemCounter[item] ? itemCounter[item]++ : itemCounter[item] = 1);
     }
   }
-  //console.log(itemCounter);
   return itemCounter;
 };
 
