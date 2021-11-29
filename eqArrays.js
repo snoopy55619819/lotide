@@ -1,9 +1,3 @@
-//Assert Equal function.
-const assertEqual = function(actual, expected) {
-  const same = actual === expected;
-  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: ${actual} ${same ? '===' : '!=='} ${expected}`);
-};
-
 const eqArrays = function(array1, array2) {
   let areArraysEqual = true;
   
@@ -27,19 +21,4 @@ const eqArrays = function(array1, array2) {
   return (array1.length === array2.length ? true : false);
 };
 
-//Test cases:
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => should FAIL
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => should PASS
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => should FAIL
-
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => true
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => false
-
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
-
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true); // => true
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false); // => false
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false); // => false
-assertEqual(eqArrays([[[[[[1,2]]]]]], [[[[[[1,2]]]]]]), true); // => true
+module.exports = eqArrays;
