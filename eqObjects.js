@@ -26,22 +26,30 @@ const eqObjects = function(object1, object2) {
     const key1Value = object1[obj1key];
     const key2Value = object2[obj1key];
     const isValueAnArray = Array.isArray(key1Value);
+    const isValue1AnObject = (typeof key1Value === 'object' && !Array.isArray(key1Value) && key1Value !== null ? true : false);
+    const isValue2AnObject = (typeof key2Value === 'object' && !Array.isArray(key2Value) && key2Value !== null ? true : false);
     
-    // TO-DO: work on implementing objects as values later.
-    // const isValueAnObject = (typeof object1Keys === 'object' && !Array.isArray(object1Keys) && object1Keys !== null ? true : false)
-    // if (isValueAnObject) {
-    // }
-    
-    //If value is an array, use eqArrays() function to compare them.
-    if (isValueAnArray) {
+    //If values are objects use recursion to check if values are even.
+    if (isValue1AnObject || isValue2AnObject) {
+      if (isValue1AnObject && isValue2AnObject) {
+        const areObjsEqual = eqObjects(key1Value, key2Value);
+
+        if (!areObjsEqual) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if (isValueAnArray) { //If value is an array, use eqArrays() function to compare them.
       const areArraysEqual = eqArrays(key1Value, key2Value);
+
       if (!areArraysEqual) {
         return false;
       }
-    } else if (key1Value !== key2Value) {
+    } else if (key1Value !== key2Value) { //If values are just primative types.
       return false;
     }
-  }
+  };
   //If the length of the arrays is different, return false
   return (object1Keys.length === object2Keys.length ? true : false);
 };
@@ -63,6 +71,12 @@ const abc3 = {};
 const abc4 = {};
 assertEqual(eqObjects(abc3, abc4), true); // => true
 
+//Test cases with array as value
 const abc5 = {a: [1, 2, 3]};
 const abc6 = {a: [1, 2, 3]};
 assertEqual(eqObjects(abc5, abc6), true); // => true
+
+//Test cases with objects as value
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
