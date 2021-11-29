@@ -1,8 +1,4 @@
-//Check if values are same and return assertion result.
-const assertEqual = function(actual, expected) {
-  const same = actual === expected;
-  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: ${actual} ${same ? '===' : '!=='} ${expected}`);
-};
+const assertEqual = require('./assertEqual');
 
 //countOnly will be given an array and an object. 
 // It will return an object containing counts of everything that the input object listed.
@@ -39,3 +35,5 @@ assertEqual(result1["Jason"], 1);
 assertEqual(result1["Karima"], undefined);
 assertEqual(result1["Fang"], 2);
 assertEqual(result1["Agouhanna"], undefined);
+
+module.exports = countOnly;

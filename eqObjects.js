@@ -1,18 +1,6 @@
 //Nikhil Tallapureddy
-
-//Check if values are same and return assertion result.
-const assertEqual = function(actual, expected) {
-  const same = actual === expected;
-  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: ${actual} ${same ? '===' : '!=='} ${expected}`);
-};
-//Check if two arrays are equal.
-const eqArrays = function(array1, array2) {
-  let areArraysEqual = true;
-  for (let i = 0; i < array1.length; i++) {
-    (array1[i] === array2[i] ? areArraysEqual = true : areArraysEqual = false);
-  }
-  return (array1.length === array2.length ? areArraysEqual : false);
-};
+const assertEqual = require('./assertEqual');
+const eqArrays = require('./eqArrays');
 
 //eqObjects() function.
 // Returns true if both objects have identical keys with identical values.
@@ -80,3 +68,5 @@ assertEqual(eqObjects(abc5, abc6), true); // => true
 assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
 assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // => false
 assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
+
+module.exports = eqObjects;
