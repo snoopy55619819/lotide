@@ -1,17 +1,5 @@
-//eqArrays function.
-const eqArrays = function(array1, array2) {
-  let areArraysEqual = true;
-  for (let i = 0; i < array1.length; i++) {
-    (array1[i] === array2[i] ? areArraysEqual = true : areArraysEqual = false);
-  }
-  return (array1.length === array2.length ? areArraysEqual : false);
-};
-
-//Check if arrays are same and return assertion result.
-const assertArraysEqual = function(actual, expected) {
-  const same = eqArrays(actual, expected)
-  console.log(`${same ? '✅✅✅' : '❌❌❌'}Assertion ${same ? 'Passed' : 'Failed'}: [${actual}] ${same ? '===' : '!=='} [${expected}]`);
-};
+const eqArrays = require('./eqArrays');
+const assertArraysEqual = require('./assertArraysEqual');
 
 //Return the middle element(s) of a given array.
 const middle = function(arr) {
@@ -28,15 +16,4 @@ const middle = function(arr) {
   }
 };
 
-//Test cases:
-const result1 = middle([]);
-const result2 = middle([1]);
-const result3 = middle([1, 2]);
-const result4 = middle([1, 2, 3]);
-const result5 = middle([1, 2, 3, 4, 5, 6, 7, 8]);
-
-assertArraysEqual(result1, []);
-assertArraysEqual(result2, []);
-assertArraysEqual(result3, []);
-assertArraysEqual(result4, [2]);
-assertArraysEqual(result5, [4, 5]);
+module.exports = middle;
