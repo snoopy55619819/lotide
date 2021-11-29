@@ -1,8 +1,27 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const tail = require('../tail');
+const eqArray = require('../eqArrays');
 
-// let originalArray = ["Hello", "Lighthouse", "Labs"];
-// tail(originalArray);
-// const result = tail(originalArray);
-// assertEqual(result.join(""), ["Lighthouse", "Labs"].join("")); //Output: false -> this will always fail as arrays can't be compared with the way we have the assert function made currently.
-// assertEqual(["Hello", "Lighthouse", "Labs"].join(), originalArray.join()); //Check if original array gets modified.
+describe('#tail', () => {
+  it ("returns ['Lighthouse', 'Labs'] for ['Hello', 'Lighthouse', 'Labs']", () => {
+    const inputArray = ["Hello", "Lighthouse", "Labs"];
+    const expectedOutput = ['Lighthouse', 'Labs'];
+    assert.deepEqual(tail(inputArray), expectedOutput);
+  });
+  it ("returns ['Lighthouse'] for ['Hello', 'Lighthouse']", () => {
+    const inputArray = ["Hello", "Lighthouse"];
+    const expectedOutput = ['Lighthouse'];
+    assert.deepEqual(tail(inputArray), expectedOutput);
+  });
+  it ("returns [] for ['Hello']", () => {
+    const inputArray = ["Hello"];
+    const expectedOutput = [];
+    assert.deepEqual(tail(inputArray), expectedOutput);
+  });
+  it ("returns [] for []", () => {
+    const inputArray = [];
+    const expectedOutput = [];
+    assert.deepEqual(tail(inputArray), expectedOutput);
+  });
+});
+
