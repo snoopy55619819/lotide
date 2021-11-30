@@ -44,7 +44,7 @@ The following functions are currently implemented:
 * `eqArrays(array1, array2)`: Function takes in 2 arrays and returns true if they are equal.  
   => input: (array, array)  
   => return: boolean 
-* `eqObjects(object1, object2)`: FUnction takes in 2 onbjects and returns true if they are equal.  
+* `eqObjects(object1, object2)`: Function takes in 2 onbjects and returns true if they are equal.  
   => input: (object, object)  
   => return: boolean
 * `findKey(object, callback)`: Function looks for a value that makes the callback function truthy and returns its key, else undefined.  
