@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@snoopy55619819/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lotide contains often used string, array and object manipulation methods as well as assertion unit testing framework.",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "./node_modules/mocha/bin/mocha"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/snoopy55619819/lotide.git"
   },
-  "author": "",
+  "author": "NikhilT",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/snoopy55619819/lotide/issues"
