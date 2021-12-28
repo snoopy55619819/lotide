@@ -1,5 +1,7 @@
 const assertEqual = require('../assertEqual');
 
+//Can't test with mocha and chai efficiently.
+
 //assertEqual() Test Code:
 // assertEqual('abc', 'abc'); //Output: "Assertion Passed: 'abc' === 'abc'"
 // assertEqual("Lighthouse Labs", "Bootcamp"); //Output: "Assertion Failed: 'Lighthouse Labs' !== 'Bootcamp'"

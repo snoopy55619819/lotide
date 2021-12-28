@@ -1,19 +1,40 @@
-const assertEqual = require('../assertEqual');
 const eqArrays = require('../eqArrays');
+const assert = require('chai').assert;
 
-//Test cases:
-// assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
-// assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => should FAIL
-// assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => should PASS
-// assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => should FAIL
-
-// assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => true
-// assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => false
-
-// assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-// assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
-
-// assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true); // => true
-// assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false); // => false
-// assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false); // => false
-// assertEqual(eqArrays([[[[[[1,2]]]]]], [[[[[[1,2]]]]]]), true); // => true
+describe('#eqArrays', () => {
+  it ('should return true for ([1, 2, 3], [1, 2, 3])', () => {
+    const array1 = [1, 2, 3];
+    const array2 = [1, 2, 3];
+    assert.deepEqual(eqArrays(array1, array2), true);
+  });
+  it ('should return false for ([1, 2, 3], [1, 2, 2])', () => {
+    const array1 = [1, 2, 3];
+    const array2 = [1, 2, 2];
+    assert.deepEqual(eqArrays(array1, array2), false);
+  });
+  it ('should return true for (["1", "2", "3"], ["1", "2", "3"])', () => {
+    const array1 = ["1", "2", "3"];
+    const array2 = ["1", "2", "3"];
+    assert.deepEqual(eqArrays(array1, array2), true);
+  });
+  it ('should return true for ([], [])', () => {
+    const array1 = [];
+    const array2 = [];
+    assert.deepEqual(eqArrays(array1, array2), true);
+  });
+  it ('should return true for ([1], [1])', () => {
+    const array1 = [1];
+    const array2 = [1];
+    assert.deepEqual(eqArrays(array1, array2), true);
+  });
+  it ('should return true for ([[2, 3], [4]], [[2, 3], [4]])', () => {
+    const array1 = [[2, 3], [4]];
+    const array2 = [[2, 3], [4]];
+    assert.deepEqual(eqArrays(array1, array2), true);
+  });
+  it ('should return true for ([[[[[[1,2]]]]]], [[[[[[1,2]]]]]])', () => {
+    const array1 = [[[[[[1,2]]]]]];
+    const array2 = [[[[[[1,2]]]]]];
+    assert.deepEqual(eqArrays(array1, array2), true);
+  });
+});

@@ -24,6 +24,8 @@ This project was created and published by me as part of my learnings at Lighthou
 
 ## Documentation
 
+Refer to [npm](https://www.npmjs.com/package/@snoopy55619819/lotide) for published library.  
+
 The following functions are currently implemented:
 
 * `assertArraysEqual(actual, expected)`: Function takes in 2 arrays and uses framework to output assertion based on comparison result.  
